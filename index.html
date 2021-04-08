@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>ROCK, PAPER, or SCISSORS - GAME</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+
+<body>
+        
+    <header>
+        <h1>This is Rock, Paper, or Scissors game.</h1>
+        <h3>Enjoy the game and good luck with beating this PC!</h3>
+    </header>
+
+    
+    <div class="selection">
+        <h4>Make your choice below.</h4>
+            <div class="userchoice">
+                <button id="ROCK" onclick="userSelection(this.id)">ROCK</button>
+            </div>
+            <div class="userchoice">
+                <button id="PAPER" onclick="userSelection(this.id)">PAPER</button>
+            </div>
+            <div class="userchoice">
+                <button id="SCISSORS" onclick="userSelection(this.id)">SCISSORS</button>
+            </div>
+    </div>
+    
+    <div class="selection">
+            <h4>Computere's choice:</h4>
+                <div id="pc"></div>
+    </div>
+   
+    <div id="result"></div>
+
+      
+    <script src="script.js"></script> 
+           
+</body>>
+</html>
