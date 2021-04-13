@@ -2,8 +2,6 @@ const userSelection = (clicked_id) => {
         let getRandom = Math.floor(Math.random() * 3);
         const gameOptions = ["ROCK", "PAPER", "SCISSORS"];
         const finalChoice = gameOptions[getRandom];
-        console.log(w);
-        console.log(l);
 
         switch (clicked_id) {
             case "ROCK": 
@@ -65,13 +63,13 @@ const userSelection = (clicked_id) => {
             break;
             }
 
-            if(l === 5){
+            if(l === 4){
                 document.getElementById('result').textContent = 'STOP! YOU NEED PRACTICE!';
                 document.getElementById('result').style.color = 'red';
                 l = 0;
                 w = 0;
                 }
-                else if(w === 5){
+                else if(w === 4){
                             document.getElementById('result').textContent = 'You are really good!';
                             document.getElementById('result').style.color = 'green';
                             l = 0;
