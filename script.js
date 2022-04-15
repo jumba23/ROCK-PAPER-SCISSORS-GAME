@@ -1,85 +1,76 @@
-const userSelection = (clicked_id) => {
-        let getRandom = Math.floor(Math.random() * 3);
-        const gameOptions = ["ROCK", "PAPER", "SCISSORS"];
-        const finalChoice = gameOptions[getRandom];
+let winCount = 0;
+let lossCount = 0;
 
-        switch (clicked_id) {
-            case "ROCK": 
-                if (finalChoice === "ROCK"){
-                document.getElementById('pc').textContent = finalChoice;
-                document.getElementById('result').textContent = 'TIE GAME';
-                document.getElementById('result').style.color = 'black';
-                } 
-                    else if (finalChoice === "PAPER") {
-                    document.getElementById('pc').textContent = finalChoice;
-                    document.getElementById('result').textContent = 'YOU LOSE';
-                    document.getElementById('result').style.color = 'red';
-                    l++;
-                    }
-                        else {
-                        document.getElementById('pc').textContent = finalChoice;
-                        document.getElementById('result').textContent = 'YOU WIN';
-                        document.getElementById('result').style.color = 'green';
-                        w++;
-                        }
-            break;
-            case "PAPER":
-                if (finalChoice === "ROCK"){
-                    document.getElementById('pc').textContent = finalChoice;
-                    document.getElementById('result').textContent = 'YOU WIN';
-                    document.getElementById('result').style.color = 'green';
-                    w++;
-                    }
-                        else if (finalChoice === "PAPER") {
-                        document.getElementById('pc').textContent = finalChoice;
-                        document.getElementById('result').textContent = 'TIE GAME';
-                        document.getElementById('result').style.color = 'black';
-                        }
-                            else {
-                            document.getElementById('pc').textContent = finalChoice;
-                            document.getElementById('result').textContent = 'YOU LOSE';
-                            document.getElementById('result').style.color = 'red';
-                            l++;
-                            }
-            break;
-            case "SCISSORS":
-                if (finalChoice === "ROCK"){
-                    document.getElementById('pc').textContent = finalChoice;
-                    document.getElementById('result').textContent = 'YOU LOSE';
-                    document.getElementById('result').style.color = 'red';
-                    l++;
-                    }
-                        else if (finalChoice === "PAPER") {
-                        document.getElementById('pc').textContent = finalChoice;
-                        document.getElementById('result').textContent = 'YOU WIN';
-                        document.getElementById('result').style.color = 'green';
-                        w++;
-                        }
-                            else {
-                            document.getElementById('pc').textContent = finalChoice;
-                            document.getElementById('result').textContent = 'TIE GAME';
-                            document.getElementById('result').style.color = 'black';
-                            }
-            break;
-            }
+const gameChoice = document.querySelectorAll("button");
 
-            if(l === 4){
-                document.getElementById('result').textContent = 'STOP! YOU NEED PRACTICE!';
-                document.getElementById('result').style.color = 'red';
-                l = 0;
-                w = 0;
-                }
-                else if(w === 4){
-                            document.getElementById('result').textContent = 'You are really good!';
-                            document.getElementById('result').style.color = 'green';
-                            l = 0;
-                            w = 0;
-                }
+gameChoice.forEach((choice) =>
+  choice.addEventListener("click", (e) => playGame(e.target))
+);
 
-        };
+const playGame = (choice) => {
+  const userChoice = choice.id;
+  const computerChoice = getComputerChoice();
 
-let l = 0;
-let w = 0;
-        
+  const computerChoiceMessage = document.getElementById("pc");
+  computerChoiceMessage.style.display = "block";
+  computerChoiceMessage.textContent = computerChoice;
 
- 
+  gameWinner(userChoice, computerChoice);
+};
+
+const getComputerChoice = () => {
+  const gameOptions = ["ROCK", "PAPER", "SCISSORS"];
+  return gameOptions[Math.floor(Math.random() * gameOptions.length)];
+};
+
+const gameWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) gameResult("TIE");
+
+  switch (userChoice) {
+    case "ROCK":
+      if (computerChoice === "PAPER") gameResult("LOSE");
+      if (computerChoice === "SCISSORS") gameResult("WIN");
+      break;
+    case "PAPER":
+      if (computerChoice === "SCISSORS") gameResult("LOSE");
+      if (computerChoice === "ROCK") gameResult("WIN");
+      break;
+    case "SCISSORS":
+      if (computerChoice === "ROCK") gameResult("LOSE");
+      if (computerChoice === "PAPER") gameResult("WIN");
+      break;
+  }
+};
+
+const gameResult = (result) => {
+  const resultMessage = document.getElementById("result");
+
+  switch (result) {
+    case "WIN":
+      resultMessage.textContent = `YOU ${result}`;
+      resultMessage.style.color = "green";
+      winCount++;
+      break;
+    case "LOSE":
+      resultMessage.textContent = `YOU ${result}`;
+      resultMessage.style.color = "red";
+      lossCount++;
+      break;
+    case "TIE":
+      resultMessage.textContent = `YOU ${result}`;
+      resultMessage.style.color = "black";
+      break;
+  }
+
+  if (winCount === 4) {
+    resultMessage.textContent = "You are really good!";
+    resultMessage.style.color = "green";
+    winCount = 0;
+    lossCount = 0;
+  } else if (lossCount === 4) {
+    resultMessage.textContent = "You need practice!";
+    resultMessage.style.color = "red";
+    lossCount = 0;
+    winCount = 0;
+  }
+};
