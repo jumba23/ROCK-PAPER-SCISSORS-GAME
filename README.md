@@ -7,7 +7,7 @@ Simple ROCK PAPER SCISSORS GAME - For this application I was using HTML, CSS, Bo
 <p align="center">
   <img 
     width="500"
-    height="700"
+    height="600"
     src="https://user-images.githubusercontent.com/80366503/163649257-241cb7ec-9606-43f5-803e-ac1e076a425e.PNG"
   >
 </p>
