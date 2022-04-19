@@ -6,8 +6,8 @@ Simple ROCK PAPER SCISSORS GAME - For this application I was using HTML, CSS, Bo
 ## Gameplay screenshot 
 <p align="center">
   <img 
-    width="500"
-    height="600"
+    width="600"
+    height="800"
     src="https://user-images.githubusercontent.com/80366503/163649257-241cb7ec-9606-43f5-803e-ac1e076a425e.PNG"
   >
 </p>
