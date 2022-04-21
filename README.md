@@ -1,7 +1,7 @@
 # ROCK,PAPER, SCISSORS GAME
 Simple ROCK PAPER SCISSORS GAME - For this application I was using HTML, CSS, Bootstrap and Javascript
 
-## Try it - [here](https://jumba23.github.io/ROCK-PAPER-SCISSORS-GAME/)
+### Try it - [here](https://jumba23.github.io/ROCK-PAPER-SCISSORS-GAME/)
  
 ## Gameplay screenshot 
 <p align="center">
